@@ -36,7 +36,7 @@ def clean_torque(text):
     return float(match[0]) if match else None
 
 # --- Model Similarity Logic ---
-def get_top_matches_for_new_model(fetched_data, top_n=5, CSV_PATH="Model.csv"):
+def get_top_matches_for_new_model(fetched_data, top_n=5, CSV_PATH=os.path.join(os.path.dirname(__file__), "Model.csv")):
     df = pd.read_csv(CSV_PATH)
     # Add the fetched model as a new row (in memory only)
     row_to_add = {k: (json.dumps(v) if isinstance(v, list) else v) for k, v in fetched_data.items()}
@@ -113,7 +113,7 @@ def main():
     config = types.GenerateContentConfig(tools=[grounding_tool])
 
     # Model CSV path
-    CSV_PATH = "Model.csv"
+    CSV_PATH = os.path.join(os.path.dirname(__file__), "Model.csv")
 
     st.set_page_config(page_title="Model Data Fetching (Web search)", layout="wide")
     st.title("Model Data Fetching (Web search)")

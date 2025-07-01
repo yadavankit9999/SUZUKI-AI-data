@@ -4,9 +4,10 @@ import re
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
 # --- CONFIG ---
-CSV_PATH = "Model.csv"
+CSV_PATH = os.path.join(os.path.dirname(__file__), "Model.csv")
 TOP_N = 5
 
 def extract_number(text):
